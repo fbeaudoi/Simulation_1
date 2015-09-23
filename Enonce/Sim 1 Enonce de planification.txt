@@ -1,0 +1,40 @@
+Sim 1: Énoncé de planification
+
+La planification d'un projet de développement logiciel s'effectue à 3 niveaux de détails distincts et pour lesquels il existe au moins un livrable. Pour chacun des livrables, la liste des éléments qu'il doit contenir est détaillée. Dites-vous que la Simulation-1 vous permet de vous pratiquer pour la Simulation 2 où des livrables similaires vous seront demandés.
+Livrables et leurs éléments demandés
+
+ (1 pt) Stratégique - Charte de projet (1 à 2 pages)
+
+    (0,2) Un énoncé de vision
+    (0,2) 2 à 4 objectifs SMART
+    (0,1) Une matrice des leviers dûment remplie
+    (0,2) Un résumé des coûts anticipés (en $)
+    (0,1) Les critères de succès
+    (0,2) Une liste des risques avec action de mitigation et/ou de contingence
+
+(1,5 pt) Tactique - Charte d'équipe (1 à 4 pages)
+
+    (0,2) Nom de l'équipe et sa liste de membres avec une référence au projet (c.-à-d. Sim-1 et/ou Jeu de pari de cartes ou tout autre nom que l'équipe juge approprié)
+    (0,5) Liste des rôles (titre ou fonction) avec leurs responsabilités et affectation.  Il doit y avoir un coordonnateur, au moins un développeur, au moins une personne responsable de l'assurance qualité, au moins une personne responsable de la gestion de configuration. Vous devez aussi indiquer n'importe quel autre rôle que l'équipe juge utile et nécessaire en précisant les responsabilités.
+    (0,1) Le cycle de développement choisit pour ce projet et sa justification
+    (0,2) Les différents outils que l'équipe utilisera et leurs usages. Assurez-vous que tous y aient accès. L'extrant («output») de ces outils devra être transmissible au professeur (fichier texte, Word, PowerPoint, Excel, PDF, JPEG, PNG, OpenOffice).
+    (0,1) Les éléments de coordination de l'équipe. Par exemple : lieux, dates et heures de rencontres, ou mécanismes privilégiés de travail d'équipe (c.-à-d. labo, Skype, etc.). Les moyens de communication de l'information pertinente (p. ex. courriel, forum d'équipe, téléphone, Google+ ou Skype, etc.)
+    (0,1) Mode décisionnel principal et secondaire. Les modes possibles sont unanimité, consensus, majorité, autocratie par le coordonnateur, mais vous pouvez en créer d'autres, à condition qu'ils soient expliqués clairement.
+    (0,3) Résolution de conflits. Si quelque chose ne se passe pas bien, comment doit réagir l'équipe? Vous pouvez vous inspirer de Wikipédia: Résolution de conflit.  Vous devez prévoir au minimum le cas où un membre d'équipe ne livre pas ses engagements, car c'est l'équipe, et non la professeure, qui jugera de son sort et de sa partie de la note.
+
+ (1 pt) Tactique - Définition de terminée (une demi-page)
+
+La définition doit comprendre la liste de toutes les activités requises pour assurer la qualité des fonctionnalités et autres livrables. Elle doit tenir sur une demi-page tout en étant lisible et comprise de tous. Elle doit comprendre au moins 3 activités tactiques, dont la revue par les pairs.
+ (1,5 pt) Opérationnel - Liste des activités (taille à déterminer par chaque équipe, au besoin)
+
+Les activités doivent être regroupées par fonctionnalité ou par livrable ou pour une phase donnée du projet (p. ex. démarrage). Elles devraient se retrouver dans l'ordre où elles seraient exécutées.
+
+Chaque activité doit comporter les attributs suivants:
+
+    Un titre ou un nom;
+    Une estimation en heures de l'effort requis (et des coûts extrapolés au tarif entendu);
+    Une date de début et/ou de fin (chaque activité ne devrait pas durer plus d'une journée, car c'est un petit devoir);
+    Le nom ou les initiales de la personne responsable de l'activité;
+    De l'espace doit être réservé pour les données réelles du projet: effort, date(s), responsable(s), car elles devront être remplies pendant la réalisation.
+
+Je souhaite une bonne dynamique d'équipe à tous!

@@ -1,0 +1,31 @@
+(3 pts) Bilan de la Sim-1
+
+La 3e et dernière partie de la Simulation-1 vise à expérimenter les rétrospectives et l'amélioration continue tout en fermant un projet. Vous devez remettre 2 livrables (vous avez le choix de les remettre en un seul document ou dans deux documents séparés):
+
+1- (1,5 pt) Un rapport de rétrospective d'équipe (1 à 3 pages max!):
+
+    (0,9 pt) Liste des pratiques faites par l'équipe pendant la Simulation-1 qui seraient classées ainsi:
+    Les bonnes pratiques (Good) : pratiques que l'équipe considère bonnes et qu'on veut refaire;
+    Les pratiques irritantes (Bad) : pratiques qui ont laissé l'équipe 'tiède' et qu'on voudrait faire autrement la prochaine fois, nécessitant fort probablement des ajustements mineurs;
+    Les mauvaises pratiques (Ugly) : pratiques inacceptables ou ayant mené à un résultat médiocre ou pratique pour lesquelles l'équipe doit travailler autrement la prochaine fois;
+    (0,6 pt) Deux à trois éléments d'amélioration avec les solutions proposées;
+    Titre (court, 1/2 ligne);
+    Problématique soulevée (1 à 3 phrases);
+    Solution retenue (1 à 5 phrases et/ou un graphique).
+
+Les éléments dans chacune des sections doivent être triés en ordre décroissant d'importance pour l'équipe.
+2- (1,5 pt) Un 'bilan de projet' sur 1 à 2 pages, tel que vu au cours:
+
+    (0,1 pt) Nom du projet, sa vision et ses objectifs (copiés de votre charte de projet);
+    (0,2 pt) Faits marquants;
+    (0,3 pt) Plan d'amélioration (résumé de la dernière partie du rapport de rétrospective - ne pas copier tel quel, mais faites un sommaire);
+    (0,2 pt) Risques perçus pour une évolution future du logiciel (si je voulais faire un autre projet d'évolution à partir de votre code, quels seraient les problèmes potentiels);
+    (0,3 pt) Portée du projet: un résumé des fonctionnalités (nombre et taille), importance et statut;
+    (0,4 pt) Mesures et indicateurs: comparaison entre les valeurs initiales et réelles
+        Effort;
+        Coûts [fictifs, à partir de l'hypothèse d'un coût horaire moyen de 90$];
+        Durée;
+        Qualité;
+        Portée.
+
+Note sur la présentation: un dessin à main levée fait sur page blanche ou un tableau, photographié clairement et cette photo insérée dans votre document est une pratique tout à fait acceptable pouvant vous donner tous vos points de présentation et de qualité de la langue s'ils sont respectés. Je vous invite à être créatifs sur la présentation et vous encourage à utiliser des formes graphiques lorsqu’approprié.

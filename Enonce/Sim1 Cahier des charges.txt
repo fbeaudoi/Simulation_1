@@ -1,0 +1,37 @@
+Sim 1: Cahier des charges
+Contexte
+
+Du code Java vous est fournit (voir ‘Tp2.java’, Clavier.java et PaquetDeCartes.java). C’est un programme permettant de simuler un jeu de paris sur une pige de cartes.
+
+Portée
+
+Ce programme a été fait il y a plus d’un an et le PO (c’est-à-dire l'enseignant ou votre client) demande les modifications suivantes :
+
+    (Essentiel) Nouveau pari. En tant que joueur/parieur, je veux ajouter une catégorie de paris 'Somme <= 7' valant '<Mise> * <Sommes des cartes>', afin de rendre le jeu plus intéressant.
+    Validation: Ce pari s'affiche en tant que choix #4. Il est gagné si la somme des 2 cartes est inférieure ou égale à 7. L'As vaut 1, les figures valent 10, et toutes les autres cartes valent leur chiffre (ex. 2=2, 3=3, etc. jusqu'à 10). Donc, ce pari gagné avec le 2 de trèfle et le 3 de carreau (somme=5) et une mise de 10$ vaudra de remporter 50$ (moins les 3$ du coût de la pige --> voir exigence #2).
+    (Essentiel) Coût d'une pige de cartes. En tant que PO, je veux que le coût d'une pige de cartes passe de 2$ à 3$, afin d'ajouter plus de défis au jeu.
+    Validation: À chaque pige de cartes, le calcul des dollars résiduels tient compte d'un coût de 3$. Aussi, les messages au joueur sont cohérents avec cette valeur.
+    (Important) Cartes graphiques simples. En tant que joueur, je veux que le jeu affiche chacune des cartes dans un encadré, avec sa valeur (A-2-3-4-5-6-7-8-9-10-J-Q-K) et sa couleur (coeur, trèfle, carreau, pique: mais graphique ASCII sur la console) à l'intérieur. Voir exemples en classe.
+    Validation: À chaque pige de cartes, les cartes graphiques simples s'affichent à la console.
+    (Important) Somme des cartes. En tant que joueur, je veux que le jeu affiche la somme des cartes afin de mieux valider l'application de la nouvelle règle.
+    Validation: Le jeu affiche 'Voici les cartes: a + b = c', où 'c' représente la somme des cartes.
+    (Important) Qualité du français. En tant que PO, je veux que toutes les fautes d'orthographe des messages visibles par l'utilisateur soient corrigées afin de donner l'apparence d'une qualité irréprochable à d'éventuels utilisateurs du public. 
+    Validation: la qualité du français des messages sera vérifiée pendant l'exécution de l'application ainsi qu'à la lecture du code après la remise.
+    (Important) Améliorations potentielles. En tant que PO, je veux que l'équipe identifie et implante des améliorations au code du jeu afin d'augmenter sa maintenabilité. L'une de ces améliorations doit être de renommer la classe "Tp2.java" par "Sim1-<nom_de_votre_équipe>.java".
+    Validation: Toutes les améliorations apportées sont clairement identifiées dans le code sous forme de nouveau commentaire commençant par 'Amélioration apportée:' suivi d'un résumé de l'amélioration. Cet aspect sera vérifié via une relecture statique du code qui sera remis.
+    (Souhaitable) Cartes graphiques complexes. En tant que joueur, je veux que l'image de chaque carte s'affiche afin de rendre le jeu plus agréable.
+    Validation: l'image de chaque carte s'affiche à chacune des piges, comme si l'on voyait une carte de jeu en carton, mais en format plus petit.
+
+Contraintes
+
+a) Vous devez respecter les normes de programmation originales (voir l'énoncé original de cet ancien Tp2 d'un cours de programmation). 
+
+b) Vous devez mesurer et consigner les attributs d’exécution réelle de chaque activité : effort, date, responsable. 
+
+c) Le coût moyen [fictif] est de 90$/heure. Cette donnée vous sera nécessaire pour l'estimation des coûts et le bilan de projet. 
+
+d) La qualité doit être assurée via les éléments de la définition de terminé (que vous ferez à la phase de planification). 
+
+e) Aucun bogue majeur ne sera toléré à l’exécution (perte totale des points liés à la démonstration). Un bogue majeur empêche l'exécution normale de l'application: gèle ou 'plante'. Chaque bogue fonctionnel de moindre importance amène une déduction équivalente aux points de l'élément bogué. 
+
+f) Une gestion de configuration doit être appliquée au minimum sur le code Java, afin de pouvoir faire un retour sur une version précédente en cas d’erreur.

@@ -29,11 +29,11 @@ public class Tp2 {
         int reponse;
         
         System.out.println ( "Quel pari voulez-vous faire ?" );
-        System.out.print ( " 1 : paire, 2 : sequence, 3 : meme couleur => " );
+        System.out.print ( " 1 : paire, 2 : sequence, 3 : meme couleur, 4 : Somme <= 7  => " );
         reponse = Clavier.lireInt (); 
         
-        while ( reponse != 1 && reponse != 2 && reponse != 3 ) {
-            System.out.print ( "*** vous devez repondre par 1, 2 ou 3 : " );
+        while ( reponse != 1 && reponse != 2 && reponse != 3 && reponse != 4) {
+            System.out.print ( "*** vous devez repondre par 1, 2, 3 ou 4 : " );
             reponse = Clavier.lireInt ();
         }
         
@@ -72,8 +72,8 @@ public class Tp2 {
     
     public static int laSorte ( int carte ) {
         
-    /* ant残仕ent : 0 <= carte <= 51
-     * cons子uent : retourne la valeur de la carte (0, 1, ... 12)
+    /* ant?c?dent : 0 <= carte <= 51
+     * cons?quent : retourne la valeur de la carte (0, 1, ... 12)
      *              0 : as, 1 : 2, 2 : 3, ..., 9 : 10, 10 : valet, 11 : dame, 12 : roi
      */
     
@@ -83,8 +83,8 @@ public class Tp2 {
     
     public static int laCouleur ( int carte ) {
         
-    /* ant残仕ent : 0 <= carte <= 51
-     * cons子uent : retourne la couleur de la carte (0, 1, 2, 3)
+    /* ant?c?dent : 0 <= carte <= 51
+     * cons?quent : retourne la couleur de la carte (0, 1, 2, 3)
      *              0 : coeur, 1 : carreau, 2 : trefle, 3 : pique
      */
     
@@ -94,8 +94,8 @@ public class Tp2 {
     
     public static boolean estUnePaire ( int carte1, int carte2 ) { 
 
-    /* ant残仕ent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons子uent : retourne vrai si carte1 et carte 2 constituent une paire,
+    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * cons?quent : retourne vrai si carte1 et carte 2 constituent une paire,
      *              faux sinon
      */
     
@@ -105,10 +105,10 @@ public class Tp2 {
 
     public static boolean sontMemeCouleur ( int carte1, int carte2 ) { 
 
-    /* ant残仕ent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons子uent : retourne vrai si carte1 et carte 2 sont de la m仁e
+    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * cons?quent : retourne vrai si carte1 et carte 2 sont de la m?me
      *              couleur.  Les 4 couleurs possibles sont : coeur, carreau,
-     *              tr叔le et pique.
+     *              tr?fle et pique.
      */
         
         return laCouleur ( carte1 ) == laCouleur ( carte2 );
@@ -117,11 +117,11 @@ public class Tp2 {
 
     public static boolean estUneSequence ( int carte1, int carte2 ) { 
 
-    /* ant残仕ent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons子uent : retourne vrai si carte1 et carte 2 forment une s子uence,
-     *              peu importe leur couleur, faux sinon.  Une s子uence de
-     *              deux cartes sont deux cartes de valeur cons残utive.  L'as
-     *              et le 2 sont consid屍仔s comme cons残utives ainsi que l'as
+    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * cons?quent : retourne vrai si carte1 et carte 2 forment une s?quence,
+     *              peu importe leur couleur, faux sinon.  Une s?quence de
+     *              deux cartes sont deux cartes de valeur cons?cutive.  L'as
+     *              et le 2 sont consid?r?es comme cons?cutives ainsi que l'as
      *              et le roi.
      */
     
@@ -134,6 +134,33 @@ public class Tp2 {
                sorte2 == 12 && sorte1 == 0;
                
     } // estUneSequence
+    
+    public static int sommeDesCartes (int carte1, int carte2) {
+    	/* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+    	 * consequent : retourne la somme des deux cartes si le resultat <=7
+    	 * 				retourne 0 sinon
+    	 *  			L'As vaut 1, les figures valent 10, 
+    	 *  			et toutes les autres cartes valent leur chiffre
+    	 */
+    	
+    	// Ajoute +1 a la position de la carte pour obtenir sa valeur reelle
+    	int valCarte1 = laSorte(carte1) + 1;
+    	int valCarte2 = laSorte(carte2) + 1;
+    	int somme;
+    	
+    	// les figures = 10
+    	if (valCarte1 > 10) {
+    		valCarte1 = 10;
+    	}
+    	
+    	// les figures = 10
+    	if (valCarte2 > 10) {
+    		valCarte2 = 10;
+    	}
+    	somme = valCarte1 + valCarte2;
+    	
+    	return somme;
+    }
 
     public static String chaineCouleur ( int carte ) {
         
@@ -175,8 +202,8 @@ public class Tp2 {
     
     public static void afficherCarte ( int carte ) { 
 
-    /* ant残仕ent : 0 <= carte <= 51
-     * cons子uent : Affiche la carte selon sa couleur et sa valeur
+    /* ant?c?dent : 0 <= carte <= 51
+     * cons?quent : Affiche la carte selon sa couleur et sa valeur
      */
     
         System.out.print ( chaineSorte ( carte ) + " " + chaineCouleur ( carte ) );
@@ -271,9 +298,19 @@ public class Tp2 {
             } else if ( pari == 2 ) { // est-ce une sequence ?
                 joueurGagne = estUneSequence ( carte1, carte2 );
                 montantGagne = 2 * mise;
-            } else { // deux de la meme couleur ?
+            } else if (pari == 3) { // deux de la meme couleur ?
                 joueurGagne = sontMemeCouleur ( carte1, carte2 );
                 montantGagne = mise;
+            } else { // Somme <= 7 ?
+            	montantGagne = sommeDesCartes( carte1, carte2 );
+            	System.out.println("La somme des deux cartes est : " + montantGagne +'\n');
+            	
+            	if (montantGagne <= 7) {
+            		montantGagne = montantGagne * mise;
+            		joueurGagne = true;
+            	} else {
+            		montantGagne = 0;
+            	}
             }
             
             // afficher si le joueur a gagne ou perdu ainsi que son gain s'il y a lieu

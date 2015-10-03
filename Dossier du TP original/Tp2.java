@@ -59,11 +59,14 @@ public class Tp2 {
     
         int reponse;
         
-        System.out.print ( "Entrez le montant de la mise ( maximum : " + max + " ) : " );
+        System.out.println ("Il y a un coût de 3$ par pige");
+        
+        // max-3 pour absorber le cout de la pige
+        System.out.print ( "Entrez le montant de la mise ( maximum : " + (max -3) + " ) : " );
         reponse = Clavier.lireInt();
         
-        while ( reponse < 0 || reponse > max ) {
-            System.out.print ( "*** Le montant doit etre entre 0 et " + max + " : " );
+        while ( reponse < 0 || reponse > max -3 ) {
+            System.out.print ( "*** Le montant doit etre entre 0 et " + (max-3) + " : " );
             reponse = Clavier.lireInt();
         }
         
@@ -317,12 +320,14 @@ public class Tp2 {
             
             if ( joueurGagne ) {
                 System.out.println ( "Bravo ! Vous avez gagne " + montantGagne + " $" );
-                montantJoueur = montantJoueur + montantGagne;
+                montantJoueur = montantJoueur + montantGagne -3;
             } else {
                 System.out.println ( "Desole ! Vous avez perdu votre mise !" );
+                montantJoueur = montantJoueur - 3;
             }
             
             System.out.println ();
+            System.out.println ("Cout de la pige : -3$");
             System.out.println ( "Vous disposez maintenant de " + montantJoueur + " $" );
             System.out.println ();
             

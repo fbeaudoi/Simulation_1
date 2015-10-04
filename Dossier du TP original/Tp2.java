@@ -1,3 +1,5 @@
+import java.io.UnsupportedEncodingException;
+
 
 /**
  * 
@@ -59,7 +61,7 @@ public class Tp2 {
     
         int reponse;
         
-        System.out.println ("Il y a un co�t de 3$ par pige");
+        System.out.println ("Il y a un coût de 3$ par pige");
         
         // max-3 pour absorber le cout de la pige
         System.out.print ( "Entrez le montant de la mise ( maximum : " + (max -3) + " ) : " );
@@ -218,13 +220,74 @@ public class Tp2 {
         System.out.print ( "Voici la premiere carte : " );
         afficherCarte ( carte1 );
         System.out.println ();
+        afficherCarteAscii(carte1);
+        System.out.println();
+        
             
         System.out.print ( "Voici la deuxieme carte : " );
         afficherCarte ( carte2 );
+        System.out.println ();
+        afficherCarteAscii(carte2);
+        System.out.println();
         System.out.println ( '\n' );
             
     } // afficherLesDeuxCartes
 
+    public static void afficherCarteAscii(int carte) {
+    	
+    	/* antecedent : 0 <= carte <= 51
+         * consequent : Affiche la carte graphiquement a l'aide des codes ASCII
+         */
+    	
+    	String couleur = chaineCouleur(carte);
+    	String sorteDroite = chaineSorte(carte); 
+    	String sorteGauche = chaineSorte(carte); //pour la mise en page lorsqu'il y a un seul caractere
+    	
+    	switch(couleur) {
+    	case "carreau":
+    		couleur = "♦";
+    		break;
+    	case "trefle":
+    		couleur = "♣";
+    		break;
+    	case "pique":
+    		couleur = "♠";
+    		break;
+    	case "coeur":
+    		couleur = "♥";
+    		break;
+    	}
+    	
+    	switch (sorteDroite) {
+    	case "valet":
+    		sorteDroite = "V";
+    		sorteGauche = "V";
+    		break;
+    	case "dame":
+    		sorteDroite = "D";
+    		sorteGauche = "D";
+    		break;
+    	case "roi":
+    		sorteDroite = "R";
+    		sorteGauche = "R";
+    		break;
+    	case "as":
+    		sorteDroite = "A";
+    		sorteGauche = "A";
+    	}
+    	
+    	if( ! sorteDroite.equals("10")) {
+    		sorteGauche = sorteGauche + " ";
+    		sorteDroite = " " + sorteDroite;
+    	}
+    	
+    	System.out.println("┌─────┐");
+    	System.out.println("│"+sorteGauche+couleur+"  │");
+    	System.out.println("│  "+couleur+"  │");
+    	System.out.println("│  "+couleur+sorteDroite+"│");
+    	System.out.println("└─────┘");
+    	
+    }
     public static void afficherFin ( int montant ) {
         
         System.out.println ( "Merci d'avoir joue avec moi !" );

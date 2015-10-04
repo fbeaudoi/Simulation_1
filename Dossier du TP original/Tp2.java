@@ -220,6 +220,7 @@ public class Tp2 {
         System.out.print ( "Voici la premiere carte : " );
         afficherCarte ( carte1 );
         System.out.println ();
+        
         afficherCarteAscii(carte1);
         System.out.println();
         
@@ -227,9 +228,9 @@ public class Tp2 {
         System.out.print ( "Voici la deuxieme carte : " );
         afficherCarte ( carte2 );
         System.out.println ();
+        
         afficherCarteAscii(carte2);
-        System.out.println();
-        System.out.println ( '\n' );
+        System.out.println();    
             
     } // afficherLesDeuxCartes
 
@@ -287,7 +288,8 @@ public class Tp2 {
     	System.out.println("│  "+couleur+sorteDroite+"│");
     	System.out.println("└─────┘");
     	
-    }
+    } // AfficherCartesAscii
+    
     public static void afficherFin ( int montant ) {
         
         System.out.println ( "Merci d'avoir joue avec moi !" );
@@ -314,6 +316,7 @@ public class Tp2 {
         int     deuxCartes;     // les deux cartes pigees par l'ordinateur
         int     carte1;         // la premiere carte pigee
         int     carte2;         // la deuxieme carte pigee
+        int 	sommeDesCartes;	// la somme des deux cartes
         
         boolean joueurGagne;    // si le joueur a gagne ou non la partie 
         
@@ -351,8 +354,12 @@ public class Tp2 {
             
             carte1 = deuxCartes / 100;
             carte2 = deuxCartes % 100;
+            sommeDesCartes = sommeDesCartes(carte1, carte2);
             
             afficherLesDeuxCartes ( carte1, carte2 );
+            System.out.println("Voici les cartes: "+chaineSorte(carte1) + " + " + chaineSorte(carte2) + " = " + sommeDesCartes );
+            System.out.println();
+            
             
             // determiner si le joueur a gagne ou perdu
             
@@ -367,16 +374,11 @@ public class Tp2 {
             } else if (pari == 3) { // deux de la meme couleur ?
                 joueurGagne = sontMemeCouleur ( carte1, carte2 );
                 montantGagne = mise;
-            } else { // Somme <= 7 ?
-            	montantGagne = sommeDesCartes( carte1, carte2 );
-            	System.out.println("La somme des deux cartes est : " + montantGagne +'\n');
-            	
-            	if (montantGagne <= 7) {
-            		montantGagne = montantGagne * mise;
-            		joueurGagne = true;
-            	} else {
-            		montantGagne = 0;
-            	}
+            } else if (sommeDesCartes <= 7){ // Somme <= 7 ?
+            	montantGagne = sommeDesCartes * mise;
+        		joueurGagne = true;
+            } else {
+            	montantGagne = 0;
             }
             
             // afficher si le joueur a gagne ou perdu ainsi que son gain s'il y a lieu

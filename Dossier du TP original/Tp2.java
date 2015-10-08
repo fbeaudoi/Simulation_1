@@ -1,4 +1,4 @@
-import java.io.UnsupportedEncodingException;
+import javax.swing.JFrame;
 
 
 /**
@@ -269,8 +269,8 @@ public class Tp2 {
     		sorteGauche = "D";
     		break;
     	case "roi":
-    		sorteDroite = "R";
-    		sorteGauche = "R";
+    		sorteDroite = "K";
+    		sorteGauche = "K";
     		break;
     	case "as":
     		sorteDroite = "A";
@@ -320,6 +320,16 @@ public class Tp2 {
         
         boolean joueurGagne;    // si le joueur a gagne ou non la partie 
         
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        frame.setTitle("Table de jeu");
+        
+        TableDeJeu tableDeJeu = new TableDeJeu();
+        frame.add(tableDeJeu);
+        frame.pack();
+        frame.setVisible(true);
+      
+        
         // Initialiser le procede aleatoire
         
         initialiserJeuDeCarte ();
@@ -346,7 +356,7 @@ public class Tp2 {
             mise = lireMiseJoueur ( montantJoueur );
             System.out.println ();
             
-            montantJoueur = montantJoueur - mise;
+            montantJoueur = montantJoueur - mise - 3; // cout de la pige
             
             // faire piger deux cartes par l'ordinateur
             
@@ -357,6 +367,7 @@ public class Tp2 {
             sommeDesCartes = sommeDesCartes(carte1, carte2);
             
             afficherLesDeuxCartes ( carte1, carte2 );
+            tableDeJeu.afficherCartes(carte1, carte2);
             System.out.println("Voici les cartes: "+chaineSorte(carte1) + " + " + chaineSorte(carte2) + " = " + sommeDesCartes );
             System.out.println();
             
@@ -385,10 +396,9 @@ public class Tp2 {
             
             if ( joueurGagne ) {
                 System.out.println ( "Bravo ! Vous avez gagne " + montantGagne + " $" );
-                montantJoueur = montantJoueur + montantGagne -3;
+                montantJoueur = montantJoueur + montantGagne;
             } else {
                 System.out.println ( "Desole ! Vous avez perdu votre mise !" );
-                montantJoueur = montantJoueur - 3;
             }
             
             System.out.println ();

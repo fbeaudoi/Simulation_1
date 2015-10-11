@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  * @author
  * @version 
  */
-public class Tp2 {
+public class Sim1_XL {
 
     public static char lireOuiNon () {
         

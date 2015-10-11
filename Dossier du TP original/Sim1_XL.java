@@ -9,7 +9,18 @@ import javax.swing.JFrame;
  */
 public class Sim1_XL {
 
-    public static char lireOuiNon () {
+	// AMELIORATION APPORTEE : 
+	// 1. utilisation de constantes pour les valeurs arbitraires pouvant etre modifiees
+	//    selon la modification des exigences. 
+	private final static int COUTPIGE = 3; // Cout de base associe a une pige
+	private final static int VALSOMME = 7; // valeur a ne pas dépasser pour la somme des cartes
+	private final static int MISEMINIMALE = 3; // montant minimal pour une mise
+	private final static int SOLDEMINIMAL = MISEMINIMALE + COUTPIGE; // Le solde minimal qu'un joueur doit posséder pour jouer
+	
+	// AMELIORATION APPORTEE : 
+	// 1. Changement du nom de la fonction pour la rendre plus representative
+	//    de ce qu'elle accomplie
+    public static char voulezVousJouer () {
         
         char reponse;
         
@@ -24,14 +35,16 @@ public class Sim1_XL {
         }
         
         return reponse;
-    } // lireOuiNon
+    } // voulezVousJouer
     
+    // AMELIORATION APPORTEE : 
+    // 1. utilisation de constantes 
     public static int lireSortePari () {
         
         int reponse;
         
         System.out.println ( "Quel pari voulez-vous faire ?" );
-        System.out.print ( " 1 : paire, 2 : sequence, 3 : meme couleur, 4 : Somme <= 7  => " );
+        System.out.print ( " 1 : paire, 2 : sequence, 3 : meme couleur, 4 : Somme <= " + VALSOMME +"  => " );
         reponse = Clavier.lireInt (); 
         
         while ( reponse != 1 && reponse != 2 && reponse != 3 && reponse != 4) {
@@ -42,6 +55,10 @@ public class Sim1_XL {
         return reponse;
     } // lireSortePari
     
+    // AMELIORATION APPORTEE : 
+    // 1. utilisation de constantes 
+    // 2. Verification de la validite de la valeur saisie par le joueur
+    //    par rapport aux nouvelles exigences
     public static int lireMontantJoueur () {
     
         int reponse;
@@ -49,26 +66,28 @@ public class Sim1_XL {
         System.out.print ( "Entrez le montant dont vous disposez : " );
         reponse = Clavier.lireInt();
         
-        while ( reponse <= 0 ) {
-            System.out.print ( "*** Le montant doit etre superieur a 0 : " );
+        while ( reponse < SOLDEMINIMAL ) {
+            System.out.print ( "*** Le montant doit etre superieur ou egal a " + SOLDEMINIMAL + " : " );
             reponse = Clavier.lireInt();
         }
         
         return reponse;
     } // lireMontantJoueur
 
+    // AMELIORATION APPORTEE : 
+    // 1. utilisation de constantes 
+    // 2. Verification de la validite de la valeur saisie par le joueur
+    //    par rapport aux nouvelles exigences
     public static int lireMiseJoueur ( int max ) {
     
         int reponse;
         
-        System.out.println ("Il y a un coût de 3$ par pige");
-        
-        // max-3 pour absorber le cout de la pige
-        System.out.print ( "Entrez le montant de la mise ( maximum : " + (max -3) + " ) : " );
+        System.out.println ("Il y a un coût de "+ COUTPIGE +"$ par pige");
+        System.out.print ( "Entrez le montant de la mise (minimum : "+ MISEMINIMALE +"	maximum : " + (max - MISEMINIMALE) + " ) : " );
         reponse = Clavier.lireInt();
         
-        while ( reponse < 0 || reponse > max -3 ) {
-            System.out.print ( "*** Le montant doit etre entre 0 et " + (max-3) + " : " );
+        while ( reponse < MISEMINIMALE || reponse > (max - COUTPIGE) ) {
+            System.out.print ( "*** Le montant doit etre entre "+ MISEMINIMALE+" et " + (max-COUTPIGE) + " : " );
             reponse = Clavier.lireInt();
         }
         
@@ -308,7 +327,7 @@ public class Sim1_XL {
     public static void main ( String[] parametres ) {
                 
         char    reponse;        // saisi : pour la reponse o ou n
-        int     pari;           // saisi : pour la sorte de pari 1, 2 ou 3
+        int     pari;           // saisi : pour la sorte de pari 1, 2 3 ou 4
         int     montantJoueur;  // saisi puis ajuste : montant dont dispose le joueur
         int     montantGagne;   // calcule : montant gagne selon le pari effectue
         
@@ -341,7 +360,7 @@ public class Sim1_XL {
         
         // Boucle pour les parties
         
-        reponse = lireOuiNon ();
+        reponse = voulezVousJouer ();
         System.out.println ();
         
         while ( reponse == 'o' ) { 
@@ -356,7 +375,7 @@ public class Sim1_XL {
             mise = lireMiseJoueur ( montantJoueur );
             System.out.println ();
             
-            montantJoueur = montantJoueur - mise - 3; // cout de la pige
+            montantJoueur = montantJoueur - mise - COUTPIGE; // cout de la pige
             
             // faire piger deux cartes par l'ordinateur
             
@@ -385,7 +404,7 @@ public class Sim1_XL {
             } else if (pari == 3) { // deux de la meme couleur ?
                 joueurGagne = sontMemeCouleur ( carte1, carte2 );
                 montantGagne = mise;
-            } else if (sommeDesCartes <= 7){ // Somme <= 7 ?
+            } else if (sommeDesCartes <= VALSOMME){ // Somme <= VALSOMME ?
             	montantGagne = sommeDesCartes * mise;
         		joueurGagne = true;
             } else {
@@ -402,16 +421,18 @@ public class Sim1_XL {
             }
             
             System.out.println ();
-            System.out.println ("Cout de la pige : -3$");
             System.out.println ( "Vous disposez maintenant de " + montantJoueur + " $" );
             System.out.println ();
             
             // determiner si on continue ou pas
             
-            if ( montantJoueur > 0 ) {
-                reponse = lireOuiNon ();
+            //AMELIORATION APPORTEE : 
+            // 1. Comparaison avec le solde minimal du joueur
+            // 2. Modification du message en cas de solde insuffisant
+            if ( montantJoueur > SOLDEMINIMAL ) {
+                reponse = voulezVousJouer ();
             } else {
-                System.out.println ( "Vous n'avez plus d'argent, vous ne pouvez continuer." );
+                System.out.println ( "Vous n'avez plus suffisamment d'argent, vous ne pouvez continuer." );
                 reponse = 'n';
             }
 

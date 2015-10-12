@@ -20,8 +20,8 @@ import java.io.*;
  *   criteres suivants est rencontre :
  *
  *   - C'est un caractere Unicode espace (SPACE_SEPARATOR, LINE_SEPARATOR,
- *      ou PARAGRAPH_SEPARATOR) mais n'est pas aussi un caractère espace
- *      non-sécable ('\u00A0', '\u2007', '\u202F'). 
+ *      ou PARAGRAPH_SEPARATOR) mais n'est pas aussi un caractÔøΩre espace
+ *      non-sÔøΩcable ('\u00A0', '\u2007', '\u202F'). 
  *   - C'est '\u0009', HORIZONTAL TABULATION.
  *   - C'est '\u000A', LINE FEED.                 LF
  *   - C'est '\u000B', VERTICAL TABULATION.
@@ -184,7 +184,9 @@ public class Clavier {
         
     } // lireShortLn
 
-
+    // AMELIORATION APPORTEE : 
+    // 1. Ajout d'un bloc Try/Catch pour eviter que le programme plante a l'entree
+    //    d'un caractere autre qu'un entier
     public static int lireInt() { 
     
     /* antecedent : -
@@ -194,9 +196,13 @@ public class Clavier {
      *              Le nombre peut commencer par - (negatif) mais ne
      *              peut commencer par +.
      */
-    
-        return Integer.parseInt( lireMot() );
-        
+    	while (true) {
+		    try {
+		    	return Integer.parseInt( lireMot() );
+		    } catch (NumberFormatException e) {
+		    	System.out.println("Nombre invalide. Veuillez saisir un entier :");
+		    }
+    	}
     } // lireInt
 
     public static int lireIntLn() { 

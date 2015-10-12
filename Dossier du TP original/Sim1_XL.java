@@ -20,11 +20,12 @@ public class Sim1_XL {
 	// AMELIORATION APPORTEE : 
 	// 1. Changement du nom de la fonction pour la rendre plus representative
 	//    de ce qu'elle accomplie
+	// 2. Modification du message envoye a l'utilisateur pour lui afficher ses choix
     public static char voulezVousJouer () {
         
         char reponse;
         
-        System.out.print ( "Voulez-vous jouer une partie ? " );
+        System.out.print ( "Voulez-vous jouer une partie ? (o/n)" );
         reponse = Clavier.lireChar ();
         Clavier.lireFinLigne ();  
         
@@ -63,7 +64,7 @@ public class Sim1_XL {
     
         int reponse;
         
-        System.out.print ( "Entrez le montant dont vous disposez : " );
+        System.out.print ( "Entrez le montant dont vous disposez (minimum "+ SOLDEMINIMAL +") : " );
         reponse = Clavier.lireInt();
         
         while ( reponse < SOLDEMINIMAL ) {
@@ -83,7 +84,7 @@ public class Sim1_XL {
         int reponse;
         
         System.out.println ("Il y a un coût de "+ COUTPIGE +"$ par pige");
-        System.out.print ( "Entrez le montant de la mise (minimum : "+ MISEMINIMALE +"	maximum : " + (max - MISEMINIMALE) + " ) : " );
+        System.out.print ( "Entrez le montant de la mise (minimum : "+ MISEMINIMALE +" maximum : " + (max - MISEMINIMALE) + " ) : " );
         reponse = Clavier.lireInt();
         
         while ( reponse < MISEMINIMALE || reponse > (max - COUTPIGE) ) {
@@ -234,6 +235,8 @@ public class Sim1_XL {
         
     } // afficherCarte
     
+    // AMELIORATION APPORTEE :
+    // 1. Ajout de l'affichage en console des cartes en code ASCII
     public static void afficherLesDeuxCartes ( int carte1, int carte2 ) {
                           
         System.out.print ( "Voici la premiere carte : " );

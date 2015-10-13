@@ -133,7 +133,7 @@ public class Sim1_XL {
     /* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
      * consequent : retourne vrai si carte1 et carte 2 sont de la m?me
      *              couleur.  Les 4 couleurs possibles sont : coeur, carreau,
-     *              tr?fle et pique.
+     *              trefle et pique.
      */
         
         return laCouleur ( carte1 ) == laCouleur ( carte2 );
@@ -144,8 +144,8 @@ public class Sim1_XL {
 
     /* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
      * consequent : retourne vrai si carte1 et carte 2 forment une s?quence,
-     *              peu importe leur couleur, faux sinon.  Une s?quence de
-     *              deux cartes sont deux cartes de valeur cons?cutive.  L'as
+     *              peu importe leur couleur, faux sinon.  Une sequence de
+     *              deux cartes sont deux cartes de valeur consecutive.  L'as
      *              et le 2 sont consid?r?es comme cons?cutives ainsi que l'as
      *              et le roi.
      */
@@ -461,6 +461,7 @@ public class Sim1_XL {
         } // boucle de jeu
         
         afficherFin ( montantJoueur );
+        frame.setVisible(false);
         
     } // main
     

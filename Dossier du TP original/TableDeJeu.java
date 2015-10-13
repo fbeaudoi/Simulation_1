@@ -2,6 +2,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//  Les cartes graphiques utilisees sont tirees de :
+// 	https://fr.wikipedia.org/wiki/Jeu_de_52_cartes
 
 public class TableDeJeu extends JPanel {
 

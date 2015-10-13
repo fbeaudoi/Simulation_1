@@ -97,8 +97,8 @@ public class Sim1_XL {
     
     public static int laSorte ( int carte ) {
         
-    /* ant?c?dent : 0 <= carte <= 51
-     * cons?quent : retourne la valeur de la carte (0, 1, ... 12)
+    /* antecedent : 0 <= carte <= 51
+     * consequent : retourne la valeur de la carte (0, 1, ... 12)
      *              0 : as, 1 : 2, 2 : 3, ..., 9 : 10, 10 : valet, 11 : dame, 12 : roi
      */
     
@@ -108,8 +108,8 @@ public class Sim1_XL {
     
     public static int laCouleur ( int carte ) {
         
-    /* ant?c?dent : 0 <= carte <= 51
-     * cons?quent : retourne la couleur de la carte (0, 1, 2, 3)
+    /* antecedent : 0 <= carte <= 51
+     * consequent : retourne la couleur de la carte (0, 1, 2, 3)
      *              0 : coeur, 1 : carreau, 2 : trefle, 3 : pique
      */
     
@@ -119,8 +119,8 @@ public class Sim1_XL {
     
     public static boolean estUnePaire ( int carte1, int carte2 ) { 
 
-    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons?quent : retourne vrai si carte1 et carte 2 constituent une paire,
+    /* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * consequent : retourne vrai si carte1 et carte 2 constituent une paire,
      *              faux sinon
      */
     
@@ -130,8 +130,8 @@ public class Sim1_XL {
 
     public static boolean sontMemeCouleur ( int carte1, int carte2 ) { 
 
-    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons?quent : retourne vrai si carte1 et carte 2 sont de la m?me
+    /* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * consequent : retourne vrai si carte1 et carte 2 sont de la m?me
      *              couleur.  Les 4 couleurs possibles sont : coeur, carreau,
      *              tr?fle et pique.
      */
@@ -142,8 +142,8 @@ public class Sim1_XL {
 
     public static boolean estUneSequence ( int carte1, int carte2 ) { 
 
-    /* ant?c?dent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
-     * cons?quent : retourne vrai si carte1 et carte 2 forment une s?quence,
+    /* antecedent : 0 <= carte1 <= 51 et 0 <= carte2 <= 51
+     * consequent : retourne vrai si carte1 et carte 2 forment une s?quence,
      *              peu importe leur couleur, faux sinon.  Une s?quence de
      *              deux cartes sont deux cartes de valeur cons?cutive.  L'as
      *              et le 2 sont consid?r?es comme cons?cutives ainsi que l'as
@@ -227,8 +227,8 @@ public class Sim1_XL {
     
     public static void afficherCarte ( int carte ) { 
 
-    /* ant?c?dent : 0 <= carte <= 51
-     * cons?quent : Affiche la carte selon sa couleur et sa valeur
+    /* antecedent : 0 <= carte <= 51
+     * consequent : Affiche la carte selon sa couleur et sa valeur
      */
     
         System.out.print ( chaineSorte ( carte ) + " " + chaineCouleur ( carte ) );
@@ -326,6 +326,39 @@ public class Sim1_XL {
         System.out.println ();
         
     } // initialiserJeuDeCarte
+    
+    // AMELIORATION APPORTEE : 
+    // 1. Separation du calcul du montant gagne pour une modification plus simple des conditions
+    //    de calcul d'un gain pour les paris disponibles.
+    public static int montantGagne (int pari, int mise, int carte1, int carte2) {
+    	
+    	int montantGagne = 0;
+    	
+    	switch (pari) {
+    	case 1: // est-ce une paire ?
+    		if (estUnePaire (carte1, carte2)) {
+    			montantGagne = 4* mise;
+    			}
+    		break;
+    	case 2: // est-ce une sequence ?
+    		if (estUneSequence (carte1, carte2)) {
+    			montantGagne = 2 * mise;
+    			}
+    		break;
+    	case 3: // deux de la meme couleur ?
+    		if (sontMemeCouleur(carte1, carte2)) {
+    			montantGagne = mise;
+    			}
+    		break;
+    	case 4: // Somme <= VALSOMME ?
+    		int somme = sommeDesCartes(carte1, carte2);
+    		if (somme <= VALSOMME) {
+    			montantGagne = somme * mise;
+    			}
+    		break;
+    	}
+    	return montantGagne;
+    }
 
     public static void main ( String[] parametres ) {
                 
@@ -340,7 +373,9 @@ public class Sim1_XL {
         int     carte2;         // la deuxieme carte pigee
         int 	sommeDesCartes;	// la somme des deux cartes
         
-        boolean joueurGagne;    // si le joueur a gagne ou non la partie 
+        // MODIFICATION APPORTEE :
+        // 1. boolean joueurGagne; n'est plus utilisee. Si le montantGagne > 0, le joueur a 
+        //    forcement gagne.
         
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
@@ -394,29 +429,13 @@ public class Sim1_XL {
             System.out.println();
             
             
-            // determiner si le joueur a gagne ou perdu
+            // déterminer les gains du joueur
             
-            joueurGagne = false;
-            
-            if ( pari == 1 ) { // est-ce une paire ?
-                joueurGagne = estUnePaire ( carte1, carte2 );
-                montantGagne = 4 * mise;
-            } else if ( pari == 2 ) { // est-ce une sequence ?
-                joueurGagne = estUneSequence ( carte1, carte2 );
-                montantGagne = 2 * mise;
-            } else if (pari == 3) { // deux de la meme couleur ?
-                joueurGagne = sontMemeCouleur ( carte1, carte2 );
-                montantGagne = mise;
-            } else if (sommeDesCartes <= VALSOMME){ // Somme <= VALSOMME ?
-            	montantGagne = sommeDesCartes * mise;
-        		joueurGagne = true;
-            } else {
-            	montantGagne = 0;
-            }
-            
+            montantGagne = montantGagne (pari, mise, carte1, carte2);
+        
             // afficher si le joueur a gagne ou perdu ainsi que son gain s'il y a lieu
             
-            if ( joueurGagne ) {
+            if ( montantGagne > 0) {
                 System.out.println ( "Bravo ! Vous avez gagne " + montantGagne + " $" );
                 montantJoueur = montantJoueur + montantGagne;
             } else {
